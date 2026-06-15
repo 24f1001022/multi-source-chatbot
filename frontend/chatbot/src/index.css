@@ -1,0 +1,337 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background: #030712;
+  color: #f3f4f6;
+  overflow: hidden;
+}
+
+/* Background Gradients */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(96, 165, 250, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(6, 182, 212, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 85%,
+      rgba(16, 185, 129, 0.08),
+      transparent 30%
+    ),
+    #030712;
+}
+
+/* Glassmorphism Panel */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #60a5fa,
+    #06b6d4,
+    #10b981
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Sidebar Layout */
+.desktop-sidebar {
+  width: 300px;
+  min-width: 300px;
+  height: 100vh;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Cybernetic Sidebar Buttons */
+.sidebar-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.sidebar-btn:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 900px) {
+  .desktop-sidebar {
+    display: none !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-sidebar {
+    display: none !important;
+  }
+  .mobile-close {
+    display: none !important;
+  }
+}
+
+/* Cards & Lists */
+.file-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.file-card:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar */
+.navbar {
+  display: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(3, 7, 18, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+/* Welcome Suggestions Grid */
+.suggestions {
+  margin: 40px auto 0 auto;
+  max-width: 800px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.suggestions .file-card {
+  text-align: center;
+  justify-content: center;
+  padding: 16px;
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+  border-radius: 14px;
+}
+
+.suggestions .file-card:hover {
+  color: #fff;
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.08);
+}
+
+/* Chat Input Styling */
+.chat-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 15px;
+}
+
+.chat-input::placeholder {
+  color: #64748b;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 900px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+  }
+}
+
+/* Active Highlight States */
+.mode-active {
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.4) !important;
+}
+
+.upload-zone:hover {
+  transform: translateY(-2px);
+}
+
+/* RAG / Web Source Cards Grid */
+.source-card {
+  margin-top: 10px;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Markdown Rendering Polish */
+.markdown-content {
+  font-size: 15px;
+  color: #e2e8f0;
+}
+
+.markdown-content p {
+  margin-bottom: 12px;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.markdown-content li {
+  margin-bottom: 4px;
+}
+
+.markdown-content code {
+  background: rgba(255, 255, 255, 0.08);
+  color: #22d3ee;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 14px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #e2e8f0;
+  font-size: 13px;
+  border-radius: 0;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
