@@ -4,12 +4,10 @@ python-multipart==0.0.32
 
 langchain==0.3.25
 langchain-community==0.3.24
-langchain-huggingface==0.2.0
 langchain-text-splitters
 
 faiss-cpu==1.14.2
-
-sentence-transformers==4.1.0
+langchain-huggingface==0.2.0
 
 huggingface_hub==0.33.0
 
