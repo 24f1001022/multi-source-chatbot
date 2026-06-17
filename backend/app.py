@@ -95,7 +95,7 @@ def rebuild_vectorstore():
         return 0
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def root():
     return {
         "message": "Backend Running"
