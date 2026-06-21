@@ -12,9 +12,9 @@ export default function Sidebar() {
   const clearAllFilesFromServer = useChatStore((state) => state.clearAllFilesFromServer);
   const submitMessage = useChatStore((state) => state.submitMessage);
   const isSending = useChatStore((state) => state.isSending);
-
-  const files = uploadedFiles.filter((f) => f.type === "file" || !f.type);
-  const websites = uploadedFiles.filter((f) => f.type === "website");
+  const safeFiles = Array.isArray(uploadedFiles) ? uploadedFiles : [];
+  const files = safeFiles.filter((f) => f.type === "file" || !f.type);
+  const websites = safeFiles.filter((f) => f.type === "website");
 
   const handleRecentClick = (text) => {
     if (!isSending) {
