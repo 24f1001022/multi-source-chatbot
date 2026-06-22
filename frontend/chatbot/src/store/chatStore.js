@@ -68,7 +68,7 @@ const useChatStore = create((set, get) => ({
       const response = await sendMessage(question, mode);
       addMessage({
         role: "assistant",
-        content: response.answer || "No response received.",
+        content: (response.answer !== undefined && response.answer !== null && response.answer !== "") ? response.answer : (response.error ? `Error: ${response.error}` : "No response received."),
         sources: response.sources || [],
         web_results: response.web_results || [],
         mode: response.mode
