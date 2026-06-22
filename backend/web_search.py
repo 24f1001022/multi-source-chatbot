@@ -35,25 +35,11 @@ def search_web(query, max_results=5):
 
 
 def web_answer(question):
+    # Don't search for greetings/casual messages
+    greetings = ["hello", "hi", "hey", "how are you", "good morning", "good evening"]
+    if question.strip().lower() in greetings:
+        answer = ask_llm(question)
+        return answer, []
+
     results = search_web(question)
-
-    context = ""
-    for r in results:
-        context += f"""
-Title: {r['title']}
-Content: {r['body']}
-URL: {r['href']}
-"""
-
-    prompt = f"""
-Answer the question using the search results.
-
-Question:
-{question}
-
-Search Results:
-{context}
-"""
-
-    answer = ask_llm(prompt)
-    return answer, results
+    # ... rest stays the same
