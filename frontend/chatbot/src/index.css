@@ -105,20 +105,37 @@ body {
   overflow-y: auto;
 }
 
+/* Mobile Sidebar - Updated for full-screen overlay and better responsiveness */
 .mobile-sidebar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 280px;
-  max-width: 85vw;
+  right: 0; /* slide in from right */
+  width: 100%;
+  max-width: 100vw;
   height: 100vh;
   padding: 20px;
-  z-index: 1000;
+  z-index: 1100; /* ensure overlay above content */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
   overflow-y: auto;
+}
+
+/* Adjust mobile close button placement */
+.mobile-close {
+  align-self: flex-end;
+}
+
+/* Ensure chat window takes full width when mobile sidebar is open */
+@media (max-width: 768px) {
+  .chat-window-root {
+    width: 100%;
+    padding: 12px 8px;
+  }
 }
 
 /* Hide desktop sidebar on mobile */

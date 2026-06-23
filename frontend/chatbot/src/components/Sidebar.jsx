@@ -382,9 +382,9 @@ export default function Sidebar() {
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
-            initial={{ x: -300 }}
+            initial={{ x: 300 }}
             animate={{ x: 0 }}
-            exit={{ x: -300 }}
+            exit={{ x: 300 }}
             transition={{ duration: 0.3 }}
             className="glass mobile-sidebar"
             style={{
