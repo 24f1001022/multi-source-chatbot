@@ -19,13 +19,7 @@ export default function Home() {
 
       <div className="animated-bg" />
 
-      <div
-        style={{
-          display: "flex",
-          height: "100vh",
-          overflow: "hidden"
-        }}
-      >
+      <div className="main-layout">
         <Sidebar />
 
         <ChatWindow />

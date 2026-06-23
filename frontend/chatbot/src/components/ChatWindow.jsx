@@ -9,11 +9,11 @@ export default function ChatWindow() {
   const messages = useChatStore((state) => state.messages);
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0, overflow: "hidden" }}>
+    <div className="chat-column">
 
       <Navbar />
 
-      <div style={{ flex: 1, overflowY: "auto", padding: "clamp(16px, 4vw, 40px)" }}>
+      <div className="chat-scroll-area">
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
           {messages.length === 0 ? (

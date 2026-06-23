@@ -105,37 +105,38 @@ body {
   overflow-y: auto;
 }
 
-/* Mobile Sidebar - Updated for full-screen overlay and better responsiveness */
+/* Mobile Sidebar — OPAQUE dark background so nothing bleeds through */
 .mobile-sidebar {
   position: fixed;
   top: 0;
-  right: 0; /* slide in from right */
-  width: 100%;
-  max-width: 100vw;
+  left: 0;
+  width: 85vw;
+  max-width: 320px;
   height: 100vh;
+  height: 100dvh; /* dynamic viewport height for mobile browsers */
   padding: 20px;
-  z-index: 1100; /* ensure overlay above content */
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 1100;
+  /* Solid opaque dark background instead of transparent glass */
+  background: #0a0f1e !important;
+  border: none !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   display: flex;
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Adjust mobile close button placement */
-.mobile-close {
-  align-self: flex-end;
-}
-
-/* Ensure chat window takes full width when mobile sidebar is open */
-@media (max-width: 768px) {
-  .chat-window-root {
-    width: 100%;
-    padding: 12px 8px;
-  }
+/* Dark backdrop overlay behind mobile sidebar */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 /* Hide desktop sidebar on mobile */
@@ -148,6 +149,9 @@ body {
 /* Hide mobile sidebar & close button on desktop */
 @media (min-width: 769px) {
   .mobile-sidebar {
+    display: none !important;
+  }
+  .sidebar-backdrop {
     display: none !important;
   }
   .mobile-close {
@@ -280,6 +284,22 @@ body {
   color: #64748b;
 }
 
+/* ─── PromptBox wrapper — safe-area padding on mobile ── */
+
+.prompt-wrapper {
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, #030712 60%, transparent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .prompt-wrapper {
+    padding: 10px 10px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* ─── Mode Buttons (Web / Docs / Hybrid) ─────────────── */
 
 /* On very small screens, show icon only */
@@ -316,6 +336,38 @@ body {
 canvas {
   width: 100% !important;
   height: 100% !important;
+}
+
+/* ─── Main Layout — mobile-safe ───────────────────────── */
+
+.main-layout {
+  display: flex;
+  height: 100vh;
+  height: 100dvh; /* dynamic viewport height for mobile */
+  overflow: hidden;
+}
+
+.chat-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.chat-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: clamp(16px, 4vw, 40px);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .chat-scroll-area {
+    padding: 16px 12px;
+  }
 }
 
 /* ─── Markdown ────────────────────────────────────────── */

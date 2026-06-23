@@ -16,13 +16,7 @@ export default function PromptBox() {
   };
 
   return (
-    <div
-      style={{
-        padding: "12px 16px",
-        background: "linear-gradient(to top, #030712 60%, transparent)",
-        flexShrink: 0,
-      }}
-    >
+    <div className="prompt-wrapper">
       <div
         className="glass"
         style={{

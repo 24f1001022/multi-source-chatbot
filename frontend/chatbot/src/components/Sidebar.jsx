@@ -378,21 +378,33 @@ export default function Sidebar() {
         <SidebarContent />
       </div>
 
-      {/* Mobile */}
+      {/* Mobile backdrop + sidebar */}
       <AnimatePresence>
         {sidebarOpen && (
-          <motion.div
-            initial={{ x: 300 }}
-            animate={{ x: 0 }}
-            exit={{ x: 300 }}
-            transition={{ duration: 0.3 }}
-            className="glass mobile-sidebar"
-            style={{
-              boxShadow: "10px 0 30px rgba(0,0,0,0.5)",
-            }}
-          >
-            <SidebarContent />
-          </motion.div>
+          <>
+            {/* Dark backdrop — tap to close */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="sidebar-backdrop"
+              onClick={toggleSidebar}
+            />
+
+            {/* Slide-in sidebar from left */}
+            <motion.div
+              key="mobile-sidebar"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 300 }}
+              className="mobile-sidebar"
+            >
+              <SidebarContent />
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
